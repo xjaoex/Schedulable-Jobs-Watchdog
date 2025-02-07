@@ -6,7 +6,8 @@
         <IlluminatedCloudConnection>
           <option name="connectionName" value="PRIV" />
           <option name="connectionType" value="MDAPI" />
-          <option name="defaultModuleName" value="sfdc" />
+          <option name="defaultModuleName" value="Schedulable-Jobs-Watchdog" />
+          <option name="offlineSymbolTablePath" value="$PROJECT_DIR$/IlluminatedCloud/PRIV/OfflineSymbolTable.zip" />
         </IlluminatedCloudConnection>
       </list>
     </option>
