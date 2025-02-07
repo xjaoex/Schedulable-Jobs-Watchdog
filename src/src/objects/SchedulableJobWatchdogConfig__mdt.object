@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CronExpression__c</fullName>
+        <description>Expression used to represent the time and date the job is scheduled to run</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Required when Scheduler is not specified.</inlineHelpText>
+        <label>Cron Expression</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>JobNameRegex__c</fullName>
+        <description>Holds a regular expression to match scheduled job names.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Job Name Regex</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reschedule__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>If true, the job is rescheduled when missing.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Reschedule</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SchedulableApexClass__c</fullName>
+        <description>Type of the apex class that will be scheduled for execution.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Required when Scheduler is not specified.</inlineHelpText>
+        <label>Schedulable Apex Class</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SchedulableJobWatchdogSetting__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Schedulable Job Watchdog Setting</label>
+        <referenceTo>SchedulableJobWatchdogSetting__mdt</referenceTo>
+        <relationshipLabel>Schedulable Job Watchdog Configs</relationshipLabel>
+        <relationshipName>SchedulableJobWatchdogConfigs</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scheduler__c</fullName>
+        <description>Instance of JobScheduler responsible for rescheduling this job</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>Leave empty if want to use default scheduler logic specified in SchedulableJobsWatchdogJob.DefaultScheduler</inlineHelpText>
+        <label>Scheduler</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SendNotification__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>If it is true, a notification is sent to the designated public group specified in field Target Notification Group.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Send Notification</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Schedulable Job Watchdog Config</label>
+    <listViews>
+        <fullName>All_Configs</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>CronExpression__c</columns>
+        <columns>JobNameRegex__c</columns>
+        <columns>Reschedule__c</columns>
+        <columns>SchedulableApexClass__c</columns>
+        <columns>Scheduler__c</columns>
+        <columns>SendNotification__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Configs</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Schedulable Job Watchdog Configs</pluralLabel>
+    <validationRules>
+        <fullName>ApexClassReqForDefaultScheduler</fullName>
+        <active>true</active>
+        <description>Schedulable Apex Class is mandatory when using default Scheduler</description>
+        <errorConditionFormula>Reschedule__c &amp;&amp; ISBLANK(Scheduler__c) &amp;&amp; ISBLANK(SchedulableApexClass__c)</errorConditionFormula>
+        <errorDisplayField>SchedulableApexClass__c</errorDisplayField>
+        <errorMessage>Schedulable Apex Class is mandatory when using default Scheduler</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CronExpReqForDefaultScheduler</fullName>
+        <active>true</active>
+        <description>Cron Expression is mandatory when using default Scheduler</description>
+        <errorConditionFormula>Reschedule__c &amp;&amp; ISBLANK(Scheduler__c) &amp;&amp; ISBLANK(CronExpression__c)</errorConditionFormula>
+        <errorDisplayField>CronExpression__c</errorDisplayField>
+        <errorMessage>Cron Expression is mandatory when using default Scheduler</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>
