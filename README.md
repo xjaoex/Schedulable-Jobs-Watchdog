@@ -6,6 +6,10 @@ Scheduled Jobs Watchdog
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
+## Prerequisite
+
+This feature depends on Nebula Logger being installed in the environment. Ensure that Nebula Logger is set up and configured before using the Scheduled Jobs Watchdog.
+
 Overview
 --------
 
