@@ -1,7 +1,10 @@
 Scheduled Jobs Watchdog
 ====================================
 
-[[_TOC_]]
+<a href="https://githubsfdeploy.herokuapp.com/?owner=xjaoex&repo=Schedulable-Jobs-Watchdog">
+  <img alt="Deploy to Salesforce"
+       src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
+</a>
 
 Overview
 --------
